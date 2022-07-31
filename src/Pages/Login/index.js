@@ -5,8 +5,8 @@ import styles from './style'
 function Login({ navigation }) {
     const [users, setUsers] = useState();
     const [validate, setValidate] = useState(false);
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
+    const [username, setUsername] = useState('atuny0');
+    const [password, setPassword] = useState('9uQFF1Lh');
     const getUsers = () => {
         fetch('https://dummyjson.com/users')
             .then(res => res.json())
@@ -62,11 +62,13 @@ function Login({ navigation }) {
                 placeholder='Kullanıcı adınız giriniz..'
                 onChangeText={setUsername}
                 style={styles.input}
+                value={'atuny0'}
             />
             <TextInput
                 placeholder='Parola giriniz..'
                 onChangeText={setPassword}
                 style={styles.input}
+                value={'9uQFF1Lh'}
             />
             <Button title='Giriş Yap' onPress={navigateToHome} />
         </View>

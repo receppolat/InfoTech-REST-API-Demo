@@ -3,7 +3,8 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     userContainer: {
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        margin: '5%'
     },
     image: {
         width: 75,
@@ -14,6 +15,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         color: 'black'
+    },
+    headerContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 
 })

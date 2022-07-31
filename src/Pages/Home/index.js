@@ -2,6 +2,8 @@ import { ActivityIndicator, FlatList, Image, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './style'
 import Post from './components/Post'
+import CustomButton from './components/CustomButton'
+
 function Home(props) {
   const [posts, setPosts] = useState();
   const [users, setUsers] = useState();
@@ -49,16 +51,25 @@ function Home(props) {
     let user = [{ username: username, image: image }];
     if (users && users.users.lenght != 0 && users.users != undefined)
       user = users.users.filter(user => user.id == item.userId)
-      console.log(user);
     return (
       <Post post={item} image={user[0].image} username={user[0].username} />
     )
   }
+  const navigateTo = (route, params) => {
+    props.navigation.navigate(route, { params })
+  }
   const renderView = () => {
+    const item = 'All';
     return (
-      <View style={styles.userContainer}>
-        <Image source={{ uri: _user.image }} style={styles.image} />
-        <Text style={styles.userText}>{_user.email}</Text>
+      <View>
+        <View style={styles.headerContainer}>
+          <CustomButton text={'Kategoriler'} onPress={() => navigateTo('CategoriesScreen')} />
+          <View style={styles.userContainer}>
+            <Image source={{ uri: _user.image }} style={styles.image} />
+            <Text style={styles.userText}>{_user.email}</Text>
+          </View>
+          <CustomButton text={'Ürünler'} onPress={() =>  props.navigation.navigate('ProductsScreen', { item })} />
+        </View>
         <FlatList
           data={posts}
           renderItem={renderItem}
